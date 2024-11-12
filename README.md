@@ -54,29 +54,5 @@ This project creates a data pipeline that collects streaming traffic data, proce
 
 The streaming data consumer will continuously read messages from Kafka and insert them into the MySQL database.
 
-## Explanation of Scripts
-
-### `admin.py`
-
-This script uses the `KafkaAdminClient` from the `kafka-python` library to create a Kafka topic named `toll` if it doesn't already exist. It sets the number of partitions to 1 and the replication factor to 1.
-
-### `download_unpack_kafka.sh`
-
-This shell script downloads the Kafka binaries from the official Apache website, extracts them, and prints a success message.
-
-### `toll_traffic_generator.py`
-
-This script simulates traffic data by generating random vehicle entries and sending them as messages to the Kafka topic `toll`. Each message consists of a timestamp, vehicle ID, vehicle type, and plaza ID.
-
-### `streaming-data-reader.py`
-
-This script acts as a Kafka consumer. It connects to the Kafka topic `toll`, reads messages, and inserts the data into the `livetolldata` table in the `tolldata` database. The timestamp is formatted to match the database schema.
-
-## Requirements
-
-Make sure you have the following Python dependencies installed:
-
-- `kafka-python`: For interacting with Kafka.
-- `mysql-connector-python`: For interacting with MySQL.
 
 
